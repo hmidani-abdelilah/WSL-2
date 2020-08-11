@@ -43,3 +43,7 @@ DEL %DISTRO%.appx
 
 REM ## Open Firewall Ports
 NETSH AdvFirewall Firewall add rule name="XRDP Port %RDPPRT% for WSL" dir=in action=allow protocol=TCP localport=%RDPPRT%
+
+REM ## Configure Ubuntu 20.04 and upgrade
+ubuntu2004 
+WSL sudo apt update -y && sudo apt -y full-upgrade
