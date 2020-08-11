@@ -12,8 +12,10 @@ REM ## set-default-version 2 WSL
 
 POWERSHELL.EXE -command wsl --set-default-version 2
 
-REM ## download kernel linux and install 
+REM ## copy package 
+COPY /Y package\* C:\Windows\system32\
 
+REM ## download kernel linux and install 
 ECHO Downloading Kernel for WSL (or using local copy if available)
 IF NOT EXIST C:\Windows\system32\wsl.msi POWERSHELL.EXE -command Invoke-WebRequest -Uri https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi  -OutFile wsl.msi
 ECHO install kernel ....
