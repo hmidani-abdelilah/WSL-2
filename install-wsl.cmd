@@ -35,3 +35,11 @@ SET DISTROFULL=C:\Windows\system32\
 ECHO WSL-2 (%DISTRO%) To be installed in: %DISTROFULL%
 ECHO Downloading Ubuntu 20.04 for WSL (or using local copy if available)
 IF NOT EXIST C:\Windows\system32\%DISTRO%.appx POWERSHELL.EXE -Command Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile %DISTRO%.appx -UseBasicParsing
+
+REM ## Install Distro with appx
+ECHO install %DISTRO% ....
+POWERSHELL.EXE -Command Add-AppxPackage ./%DISTRO%.appx
+DEL %DISTRO%.appx
+
+REM ## Open Firewall Ports
+NETSH AdvFirewall Firewall add rule name="XRDP Port %RDPPRT% for WSL" dir=in action=allow protocol=TCP localport=%RDPPRT%
