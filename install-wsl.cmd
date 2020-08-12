@@ -28,7 +28,7 @@ DEL wsl.msi
 REM ## Get install names and port numbers
 ECHO WSL for Ubuntu 20.04  
 SET DISTRO=ubuntu2004& SET /p DISTRO=Enter a unique name for the distro or hit Enter to use default [WSL-2]: 
-SET RDPPRT=3390& SET /p RDPPRT=Enter port number for xRDP traffic or hit Enter to use default [3390]:
+REM ##SET RDPPRT=3390& SET /p RDPPRT=Enter port number for xRDP traffic or hit Enter to use default [3390]:
 
 REM ## Download ubuntu
 SET DISTROFULL=C:\Windows\system32\
@@ -42,8 +42,8 @@ POWERSHELL.EXE -Command Add-AppxPackage ./%DISTRO%.appx
 DEL %DISTRO%.appx
 
 REM ## Open Firewall Ports
-NETSH AdvFirewall Firewall add rule name="XRDP Port %RDPPRT% for WSL" dir=in action=allow protocol=TCP localport=%RDPPRT%
-
+REM ##NETSH AdvFirewall Firewall add rule name="XRDP Port %RDPPRT% for WSL" dir=in action=allow protocol=TCP localport=%RDPPRT%
+NETSH AdvFirewall Firewall add rule name="XRDP Port 3390 for WSL" dir=in action=allow protocol=TCP localport=3390
 REM ## Configure Ubuntu 20.04 and upgrade
 ubuntu2004 
 WSL sudo apt update -y && sudo apt -y full-upgrade
