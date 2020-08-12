@@ -31,10 +31,9 @@ SET DISTRO=ubuntu2004& SET /p DISTRO=Enter a unique name for the distro or hit E
 REM ##SET RDPPRT=3390& SET /p RDPPRT=Enter port number for xRDP traffic or hit Enter to use default [3390]:
 
 REM ## Download ubuntu
-SET DISTROFULL=C:\Windows\system32\
 ECHO WSL-2 (%DISTRO%) To be installed in: %DISTROFULL%
 ECHO Downloading Ubuntu 20.04 for WSL (or using local copy if available)
-IF NOT EXIST C:\Windows\system32\%DISTRO%.appx POWERSHELL.EXE -Command Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile %DISTRO%.appx -UseBasicParsing
+IF NOT EXIST %DISTRO%.appx POWERSHELL.EXE -Command Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile %DISTRO%.appx -UseBasicParsing
 
 REM ## Install Distro with appx
 ECHO install %DISTRO% ....
