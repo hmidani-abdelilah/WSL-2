@@ -17,3 +17,9 @@ The simple way to enable Windows Subsystem for Linux V2 and install Ubuntu 20.04
 * Full system call compatibility	
 
 [microsoft Documentation.](https://docs.microsoft.com/en-us/windows/wsl/)
+
+## Requirements
+* Windows 10, version 2004
+
+## installation 
+
